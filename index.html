@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Nguyễn Khắc Quyết · BA Portfolio</title>
-<meta name="description" content="Portfolio of Nguyễn Khắc Quyết, Technical Business Analyst intern: MIS TALENT 2026 agentic-AI case study, three analysis projects and two PHP/MySQL web apps.">
+<meta name="description" content="Portfolio of Nguyễn Khắc Quyết, Business Analyst intern: a credit and cash-flow decision workflow (MIS TALENT 2026), BPMN process models, user stories with acceptance criteria, three analysis projects and two web apps.">
 <meta property="og:title" content="Nguyễn Khắc Quyết · BA Portfolio">
-<meta property="og:description" content="Technical Business Analyst portfolio: requirements, data models and working software.">
+<meta property="og:description" content="Business Analyst portfolio: credit-decision workflow, BPMN, user stories with acceptance criteria, data models and working software.">
 <meta property="og:image" content="img/mt-dfd1.jpg">
 <style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -179,6 +179,37 @@ pre.code{background:var(--code-bg);color:var(--code-ink);font-family:var(--mono)
 .callout h4{margin:0 0 8px;font-family:var(--display);font-size:18px}
 .callout ol{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--ink-2);font-size:15px}
 
+/* approach */
+.approach{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden;box-shadow:var(--shadow)}
+.approach>div{padding:18px;border-right:1px solid var(--line)}
+.approach>div:last-child{border-right:0}
+.approach .step{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.approach h3{font-size:19px;font-weight:650;margin:6px 0 8px}
+.approach p{font-size:14px;color:var(--ink-2)}
+.approach .ev{margin-top:10px;font-size:12.5px;color:var(--muted)}
+.approach .ev a{color:var(--muted)}
+@media (max-width:900px){.approach{grid-template-columns:minmax(0,1fr)}.approach>div{border-right:0;border-bottom:1px solid var(--line)}.approach>div:last-child{border-bottom:0}}
+
+/* bpmn */
+#m-bpmn,#m-stories{scroll-margin-top:72px}
+.bpmn-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
+.bpmn-wrap svg{display:block;width:100%;min-width:900px;height:auto}
+.bpmn-legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:12px;font-size:13px;color:var(--muted)}
+.bpmn-legend span{display:inline-flex;align-items:center;gap:7px}
+.bpmn-legend i{display:inline-block;width:14px;height:14px}
+
+/* user stories */
+.stories{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.story{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column}
+.story .sid{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.story h4{font-family:var(--display);font-size:18px;line-height:1.25;margin:6px 0 10px}
+.story .as{font-size:14.5px;color:var(--ink-2);padding:10px 12px;border-left:3px solid var(--marker);background:var(--sunk);border-radius:0 6px 6px 0}
+.story .ac-h{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+.story ol{margin:0;padding-left:20px;display:grid;gap:8px;font-size:13.5px;color:var(--ink-2)}
+.story ol b{font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--accent);letter-spacing:.03em}
+.story .trace{margin-top:auto;padding-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+@media (max-width:900px){.stories{grid-template-columns:minmax(0,1fr)}}
+
 footer{padding-block:48px 64px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
 
 /* lightbox */
@@ -216,7 +247,8 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
   <div class="wrap">
     <a class="brand" href="#top">Nguyễn Khắc Quyết</a>
     <ul>
-      <li><a class="l" href="#mistalent">MIS TALENT</a></li>
+      <li><a class="l" href="#approach">How I work</a></li>
+      <li><a class="l" href="#mistalent">Credit decision</a></li>
       <li><a class="l" href="#cinema">Cinema booking</a></li>
       <li><a class="l" href="#patent">Patent &amp; IP</a></li>
       <li><a class="l" href="#hr">HR records</a></li>
@@ -229,31 +261,47 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
 
 <header class="hero">
   <div>
-    <p class="eyebrow">Portfolio · 2026</p>
-    <h1 style="margin-top:14px">Nguyễn Khắc Quyết<span class="role">Technical Business Analyst · Intern</span></h1>
-    <p class="thesis">I turn business processes into <mark>requirements, data models and working software</mark>, and I have led the teams that wrote them.</p>
+    <p class="eyebrow">Portfolio · 2026 · Finance &amp; operations</p>
+    <h1 style="margin-top:14px">Nguyễn Khắc Quyết<span class="role">Business Analyst · Intern</span></h1>
+    <p class="thesis">I turn business processes into <mark>requirements, data models and working software</mark>. My latest case: a credit-decision workflow that picks the cheapest qualifying loan and stops when risk or data falls short.</p>
   </div>
   <aside class="spec" aria-label="Profile summary">
-    <header><span>PROFILE.md</span><span>v2026.10</span></header>
+    <header><span>PROFILE.md</span><span>v2026.11</span></header>
     <dl>
       <dt>Major</dt><dd>Management Information Systems</dd>
       <dt>School</dt><dd>Thuong Mai University (TMU), Hanoi</dd>
       <dt>GPA</dt><dd class="num">3.64 / 4.0</dd>
       <dt>English</dt><dd class="num">TOEIC 810</dd>
       <dt>Graduation</dt><dd class="num">Expected 05/2027</dd>
-      <dt>Award</dt><dd>MIS TALENT 2026 · Second Runner-Up</dd>
-      <dt>Toolkit</dt><dd>BRD · SRS · UML · BPMN · SQL Server · MySQL · Figma · PHP</dd>
+      <dt>Domain</dt><dd>Credit &amp; cash-flow decisions · risk rules · payments</dd>
+      <dt>Awards</dt><dd>MIS TALENT 2026 · Second Runner-Up<br>Student research · Ministerial-level 3rd prize</dd>
+      <dt>Toolkit</dt><dd>BRD · SRS · User stories &amp; AC · BPMN 2.0 · UML · SQL · Excel · Power BI · Figma · Draw.io</dd>
     </dl>
   </aside>
 </header>
+
+<!-- APPROACH -->
+<section class="block" id="approach" aria-labelledby="a-h" style="scroll-margin-top:64px">
+  <div class="sec-head">
+    <h2 id="a-h">How I work as a BA</h2>
+    <p>The same five steps run through every project below. Each step links to the work that shows it.</p>
+  </div>
+  <div class="approach">
+    <div><p class="step">01 · Elicit</p><h3>Understand the business</h3><p>Map how the business runs today and where it breaks: cash, risk, hand-offs between people.</p><p class="ev">Evidence: <a href="#mistalent">OPC case analysis</a>, <a href="#cinema">7 process descriptions</a></p></div>
+    <div><p class="step">02 · Model</p><h3>Draw the process</h3><p>BPMN for the flow and decisions, DFD for the data, use case and activity diagrams for each function.</p><p class="ev">Evidence: <a href="#m-bpmn">BPMN</a>, <a href="#mistalent">DFD 0/1</a>, <a href="#cinema">UC04, UC12</a></p></div>
+    <div><p class="step">03 · Specify</p><h3>Write testable requirements</h3><p>Business rules, functional requirements and user stories with Given / When / Then acceptance criteria.</p><p class="ev">Evidence: <a href="#m-stories">user stories</a>, <a href="#mistalent">RR-001–007</a>, <a href="#cinema">~140 FRs</a></p></div>
+    <div><p class="step">04 · Validate</p><h3>Check it can be built</h3><p>Turn rules into database triggers, views and schema checks, and build working apps to test my own specs.</p><p class="ev">Evidence: <a href="#patent">triggers</a>, <a href="#hr">SQL views</a>, <a href="#built">2 web apps</a></p></div>
+    <div><p class="step">05 · Measure</p><h3>Compare before and after</h3><p>Recalculate the decision when conditions change and track results on KPI dashboards.</p><p class="ev">Evidence: <a href="#mistalent">Crisis Center</a>, <a href="#built">admin KPI dashboards</a></p></div>
+  </div>
+</section>
 
 <!-- PRJ-01 -->
 <article class="case" id="mistalent" aria-labelledby="m-h">
   <div class="case-top">
     <div>
-      <p class="pid">PRJ-01 · NATIONAL COMPETITION · AGENTIC AI</p>
-      <h2 id="m-h">AI agents that run the back office of a one-person company</h2>
-      <p class="lede">For MIS TALENT 2026 our team designed a multi-agent system for a company with a single founder. The agents decide whether the founder can take on a 4.2-billion-VND contract to expand into 20 provinces, and how to fund it.</p>
+      <p class="pid">PRJ-01 · NATIONAL COMPETITION · CREDIT &amp; CASH-FLOW DECISIONS</p>
+      <h2 id="m-h">A credit-decision workflow for a one-person company</h2>
+      <p class="lede">For MIS TALENT 2026 our team designed a multi-agent system for a company with a single founder. It decides whether the founder can take on a 4.2-billion-VND contract to expand into 20 provinces, which working-capital loan should fund it, and when a human must approve.</p>
     </div>
     <dl class="meta">
       <dt>Competition</dt><dd>MIS TALENT 2026, national contest co-organised by NEU and UEH</dd>
@@ -343,6 +391,162 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     </div>
   </div>
 
+  <div style="margin-top:44px" id="m-bpmn">
+    <h3 class="sub">Process model: funding the contract (BPMN 2.0)</h3>
+    <p style="color:var(--ink-2);max-width:72ch;margin-bottom:16px">Who does what, and where the process stops. Three exclusive gateways protect the founder from a bad loan: no qualifying product, weak evidence, or an amount large enough to need a human signature.</p>
+    <div class="bpmn-wrap">
+<svg viewBox="0 0 1180 470" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="bp-t bp-d">
+<title id="bp-t">BPMN: deciding whether and how to fund the contract</title>
+<desc id="bp-d">Four swimlanes. The Data and Finance agent calculates margin, cash and the funding gap. The Risk and Compliance agent checks seven risk rules. The Decision and Partner agent checks for a funding gap; if there is one it filters loan products by purpose, minimum amount, cost and collateral. If no loan is eligible the process stops. Otherwise it scores confidence; below 0.65 the process holds for more data. Otherwise it writes the Decision Card. If financing is above 300 million VND the founder reviews and approves it and the approval is logged; otherwise the recommendation is issued.</desc>
+<defs>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--ink-2)"/></marker>
+<style>
+.ln{fill:var(--surface);stroke:var(--line)}
+.lh{fill:var(--sunk);stroke:var(--line)}
+.lt{font:600 12.5px var(--body);fill:var(--ink)}
+.ls{font:400 11.5px var(--body);fill:var(--muted)}
+.tk{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.4}
+.tt{font:500 12px var(--body);fill:var(--ink)}
+.gw{fill:var(--surface);stroke:var(--ink-2);stroke-width:1.4}
+.gx{stroke:var(--ink-2);stroke-width:2}
+.gl{font:600 11.5px var(--body);fill:var(--ink-2)}
+.fl{fill:none;stroke:var(--ink-2);stroke-width:1.3}
+.yn{font:500 11px var(--mono);fill:var(--muted)}
+.el{font:400 11.5px var(--body);fill:var(--ink-2)}
+</style>
+</defs>
+<!-- lanes -->
+<rect class="ln" x="0.5" y="0.5" width="1179" height="100"/><rect class="lh" x="0.5" y="0.5" width="120" height="100"/>
+<rect class="ln" x="0.5" y="100.5" width="1179" height="100"/><rect class="lh" x="0.5" y="100.5" width="120" height="100"/>
+<rect class="ln" x="0.5" y="200.5" width="1179" height="170"/><rect class="lh" x="0.5" y="200.5" width="120" height="170"/>
+<rect class="ln" x="0.5" y="370.5" width="1179" height="99"/><rect class="lh" x="0.5" y="370.5" width="120" height="99"/>
+<text class="lt" x="60" y="47" text-anchor="middle">Data &amp; Finance</text><text class="ls" x="60" y="63" text-anchor="middle">agent</text>
+<text class="lt" x="60" y="147" text-anchor="middle">Risk &amp; Compliance</text><text class="ls" x="60" y="163" text-anchor="middle">agent</text>
+<text class="lt" x="60" y="282" text-anchor="middle">Decision &amp; Partner</text><text class="ls" x="60" y="298" text-anchor="middle">agent</text>
+<text class="lt" x="60" y="417" text-anchor="middle">Founder</text><text class="ls" x="60" y="433" text-anchor="middle">human approval</text>
+
+<!-- start -->
+<circle cx="165" cy="50" r="14" style="fill:var(--surface);stroke:#2F8F5B;stroke-width:2"/>
+<text class="el" x="165" y="84" text-anchor="middle">Contract offer</text>
+<path class="fl" d="M179 50 H203" marker-end="url(#ah)"/>
+
+<!-- T1 -->
+<rect class="tk" x="205" y="23" width="130" height="54" rx="8"/>
+<text class="tt" x="270" y="46" text-anchor="middle">Calculate margin,</text><text class="tt" x="270" y="61" text-anchor="middle">cash &amp; funding gap</text>
+<path class="fl" d="M270 77 V121" marker-end="url(#ah)"/>
+
+<!-- T2 -->
+<rect class="tk" x="205" y="123" width="130" height="54" rx="8"/>
+<text class="tt" x="270" y="146" text-anchor="middle">Check 7 risk rules,</text><text class="tt" x="270" y="161" text-anchor="middle">set risk level</text>
+<path class="fl" d="M270 177 V226" marker-end="url(#ah)"/>
+
+<!-- G1 -->
+<polygon class="gw" points="270,228 292,250 270,272 248,250"/><path class="gx" d="M263 243 L277 257 M277 243 L263 257"/>
+<text class="gl" x="240" y="254" text-anchor="end">Funding gap?</text>
+<path class="fl" d="M292 250 H338" marker-end="url(#ah)"/><text class="yn" x="300" y="243">Yes</text>
+
+<!-- T3 -->
+<rect class="tk" x="340" y="223" width="120" height="54" rx="8"/>
+<text class="tt" x="400" y="240" text-anchor="middle">Filter loans by</text><text class="tt" x="400" y="254" text-anchor="middle">purpose, minimum,</text><text class="tt" x="400" y="268" text-anchor="middle">cost, collateral</text>
+<path class="fl" d="M460 250 H496" marker-end="url(#ah)"/>
+
+<!-- G2 -->
+<polygon class="gw" points="520,228 542,250 520,272 498,250"/><path class="gx" d="M513 243 L527 257 M527 243 L513 257"/>
+<text class="gl" x="520" y="218" text-anchor="middle">Eligible loan?</text>
+<path class="fl" d="M542 250 H573" marker-end="url(#ah)"/><text class="yn" x="546" y="243">Yes</text>
+<path class="fl" d="M520 272 V303" marker-end="url(#ah)"/><text class="yn" x="527" y="292">No</text>
+<circle cx="520" cy="318" r="13" style="fill:var(--surface);stroke:#C0362C;stroke-width:3.2"/>
+<text class="el" x="541" y="315">Stop: no</text><text class="el" x="541" y="329">eligible loan</text>
+
+<!-- T4 -->
+<rect class="tk" x="575" y="223" width="110" height="54" rx="8"/>
+<text class="tt" x="630" y="246" text-anchor="middle">Score</text><text class="tt" x="630" y="261" text-anchor="middle">confidence</text>
+<path class="fl" d="M685 250 H726" marker-end="url(#ah)"/>
+
+<!-- G3 -->
+<polygon class="gw" points="750,228 772,250 750,272 728,250"/><path class="gx" d="M743 243 L757 257 M757 243 L743 257"/>
+<text class="gl" x="750" y="218" text-anchor="middle">Confidence ≥ 0.65?</text>
+<path class="fl" d="M772 250 H808" marker-end="url(#ah)"/><text class="yn" x="778" y="243">Yes</text>
+<path class="fl" d="M750 272 V303" marker-end="url(#ah)"/><text class="yn" x="757" y="292">No</text>
+<circle cx="750" cy="318" r="13" style="fill:var(--surface);stroke:#A16207;stroke-width:3.2"/>
+<text class="el" x="771" y="315">Hold:</text><text class="el" x="771" y="329">need more data</text>
+
+<!-- T5 -->
+<rect class="tk" x="810" y="223" width="120" height="54" rx="8"/>
+<text class="tt" x="870" y="240" text-anchor="middle">Write Decision</text><text class="tt" x="870" y="254" text-anchor="middle">Card: 3 reasons,</text><text class="tt" x="870" y="268" text-anchor="middle">1 safeguard</text>
+<path class="fl" d="M930 250 H966" marker-end="url(#ah)"/>
+
+<!-- G4 -->
+<polygon class="gw" points="990,228 1012,250 990,272 968,250"/><path class="gx" d="M983 243 L997 257 M997 243 L983 257"/>
+<text class="gl" x="990" y="218" text-anchor="middle">Above 300M VND?</text>
+<path class="fl" d="M1012 250 H1084" marker-end="url(#ah)"/><text class="yn" x="1022" y="243">No</text>
+<circle cx="1100" cy="250" r="14" style="fill:var(--surface);stroke:#2F8F5B;stroke-width:3.2"/>
+<text class="el" x="1100" y="283" text-anchor="middle">Recommendation</text><text class="el" x="1100" y="297" text-anchor="middle">issued</text>
+<path class="fl" d="M990 272 V391" marker-end="url(#ah)"/><text class="yn" x="998" y="300">Yes</text>
+
+<!-- bypass: no funding gap -->
+<path class="fl" d="M270 272 V355 H870 V279" marker-end="url(#ah)"/><text class="yn" x="278" y="300">No gap</text>
+
+<!-- T6 founder -->
+<rect class="tk" x="925" y="393" width="130" height="54" rx="8"/>
+<text class="tt" x="990" y="416" text-anchor="middle">Review &amp; approve</text><text class="tt" x="990" y="431" text-anchor="middle">Decision Card</text>
+<path class="fl" d="M1055 420 H1084" marker-end="url(#ah)"/>
+<circle cx="1100" cy="420" r="14" style="fill:var(--surface);stroke:#2F8F5B;stroke-width:3.2"/>
+<text class="el" x="1100" y="451" text-anchor="middle">Approved,</text><text class="el" x="1100" y="464" text-anchor="middle">audit-logged</text>
+</svg>
+    </div>
+    <div class="bpmn-legend" aria-hidden="true">
+      <span><i style="border:2px solid #2F8F5B;border-radius:50%"></i>Start / successful end</span>
+      <span><i style="border:3px solid #C0362C;border-radius:50%"></i>Stopped</span>
+      <span><i style="border:3px solid #A16207;border-radius:50%"></i>On hold</span>
+      <span><i style="background:var(--accent-soft);border:1.4px solid var(--accent);border-radius:3px"></i>Task</span>
+      <span><i style="border:1.4px solid var(--ink-2);transform:rotate(45deg) scale(.8)"></i>Exclusive gateway</span>
+    </div>
+  </div>
+
+  <div style="margin-top:44px" id="m-stories">
+    <h3 class="sub">Requirements as user stories</h3>
+    <p style="color:var(--ink-2);max-width:72ch;margin-bottom:16px">The business rules behind the three gateways, written so that a developer can build each one and a tester can pass or fail it.</p>
+    <div class="stories">
+      <article class="story">
+        <p class="sid">US-01 · Loan shortlist</p>
+        <h4>Shortlist only the loans that fit the gap</h4>
+        <p class="as"><b>As</b> the founder, <b>I want</b> to see only bank products that lend cash and cover my funding gap, cheapest first, <b>so that</b> I compare like with like.</p>
+        <p class="ac-h">Acceptance criteria</p>
+        <ol>
+          <li><b>GIVEN</b> funding need &gt; 0 <b>WHEN</b> the product list is built <b>THEN</b> account services, guarantees and unclassified products are excluded.</li>
+          <li><b>GIVEN</b> a product's minimum loan is above the funding need <b>THEN</b> it is marked ineligible.</li>
+          <li><b>GIVEN</b> two or more eligible products <b>THEN</b> they are ranked by annual rate + processing fee, lowest first; a tie goes to the lower collateral ratio.</li>
+        </ol>
+        <p class="trace">Traces to: RR-002 · Eligible loan? gateway</p>
+      </article>
+      <article class="story">
+        <p class="sid">US-02 · Evidence check</p>
+        <h4>No recommendation on weak evidence</h4>
+        <p class="as"><b>As</b> the founder, <b>I want</b> the system to hold back when no loan qualifies or the file is incomplete, <b>so that</b> I never act on a guess.</p>
+        <p class="ac-h">Acceptance criteria</p>
+        <ol>
+          <li><b>GIVEN</b> no product is eligible <b>WHEN</b> scoring starts <b>THEN</b> no confidence score is calculated and the deal is stopped.</li>
+          <li><b>GIVEN</b> the province is missing <b>THEN</b> data completeness is 0, so confidence = 0.4 × eligibility + 0.6 × 0 stays below 0.65.</li>
+          <li><b>GIVEN</b> cash is below the 550M reserve <b>AND</b> confidence &lt; 0.65 <b>THEN</b> the result is NEED_MORE_DATA.</li>
+        </ol>
+        <p class="trace">Traces to: RR-006 · Confidence ≥ 0.65? gateway</p>
+      </article>
+      <article class="story">
+        <p class="sid">US-03 · Approval gate</p>
+        <h4>Large financing waits for a human</h4>
+        <p class="as"><b>As</b> the founder, <b>I want</b> every loan or guarantee above 300M VND to wait for my approval, <b>so that</b> no large commitment is made without me.</p>
+        <p class="ac-h">Acceptance criteria</p>
+        <ol>
+          <li><b>GIVEN</b> financing above 300M VND <b>WHEN</b> the Decision Card is produced <b>THEN</b> approval is set to required in code, whatever the model returned.</li>
+          <li><b>GIVEN</b> a funding gap or a gross margin below 28% <b>THEN</b> the recommendation cannot be ACCEPT; only CONDITIONAL_ACCEPT or REJECT.</li>
+          <li><b>GIVEN</b> the founder approves <b>THEN</b> the approval is written to the audit trail.</li>
+        </ol>
+        <p class="trace">Traces to: RR-003, RR-005 · Above 300M? gateway</p>
+      </article>
+    </div>
+  </div>
+
   <div class="gallery two">
     <figure><button class="shot contain" type="button" data-cap="Data flow diagram, level 0: the agent system with customers, the founder and bank partners"><img src="img/mt-dfd0.jpg" alt="Level 0 data flow diagram" loading="eager"></button><figcaption><span class="tag">My work</span>DFD level 0</figcaption></figure>
     <figure><button class="shot contain" type="button" data-cap="Data flow diagram, level 1: the three agents, their data stores and the approval loop"><img src="img/mt-dfd1.jpg" alt="Level 1 data flow diagram" loading="eager"></button><figcaption><span class="tag">My work</span>DFD level 1</figcaption></figure>
@@ -405,6 +609,7 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
         <tr><td>Promotion</td><td>A code is checked against validity dates, target audience and minimum order value before the total is recalculated.</td></tr>
         <tr><td>E-ticket</td><td>Each seat gets its own QR code, sent by email and SMS and stored in the booking history.</td></tr>
         <tr><td>Loyalty</td><td>Points are added after every successful payment; members move up tiers (U22, Silver, Gold) automatically.</td></tr>
+        <tr><td>Payment</td><td>Tickets, QR codes and loyalty points are created only after the gateway callback (VNPAY, MoMo, ZaloPay, card) confirms payment. A cancelled or failed transaction offers "Pay again".</td></tr>
         <tr><td>Refund</td><td>Customers can cancel a booking themselves (UC08) within the refund policy.</td></tr>
       </table>
     </div>
