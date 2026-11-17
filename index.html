@@ -249,9 +249,9 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     <ul>
       <li><a class="l" href="#approach">How I work</a></li>
       <li><a class="l" href="#mistalent">Credit decision</a></li>
-      <li><a class="l" href="#cinema">Cinema booking</a></li>
       <li><a class="l" href="#patent">Patent &amp; IP</a></li>
       <li><a class="l" href="#hr">HR records</a></li>
+      <li><a class="l" href="#cinema">Cinema booking</a></li>
       <li><a class="l" href="#built">Built apps</a></li>
     </ul>
   </div>
@@ -264,7 +264,7 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     <p class="eyebrow">Portfolio · 2026 · Finance &amp; operations</p>
     <h1 style="margin-top:14px">Nguyễn Khắc Quyết<span class="role">Business Analyst · Intern</span></h1>
     <p class="thesis">I'm a Management Information Systems student at Thuong Mai University who enjoys working out how a business really runs and writing it down so a team can build it.</p>
-    <p class="thesis-sub">This portfolio covers four analysis projects: a credit and cash-flow decision workflow that placed Second Runner-Up at MIS TALENT 2026, a cinema booking system, and two SQL Server databases for patent rights and HR records. I led the team on three of them. It ends with two web apps I built on my own to test my specs in code.</p>
+    <p class="thesis-sub">This portfolio covers four analysis projects: a credit and cash-flow decision workflow that placed Second Runner-Up at MIS TALENT 2026, two SQL Server databases for patent rights and HR records, and a cinema booking system. I led the team on three of them. It ends with two web apps I built on my own to test my specs in code.</p>
   </div>
   <aside class="spec" aria-label="Profile summary">
     <header><span>PROFILE.md</span><span>v2026.11</span></header>
@@ -556,10 +556,131 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
 </article>
 
 <!-- PRJ-02 -->
+<article class="case" id="patent" aria-labelledby="p-h">
+  <div class="case-top">
+    <div>
+      <p class="pid">PRJ-02 · DATABASE ADMINISTRATION</p>
+      <h2 id="p-h">Patent registration &amp; IP rights management</h2>
+      <p class="lede">A SQL Server database that follows a patent from the first application to a granted, valued and transferable intellectual property right, with AI suggestions for patent classification.</p>
+    </div>
+    <dl class="meta">
+      <dt>Course</dt><dd>Database Administration, TMU</dd>
+      <dt>When</dt><dd class="num">11/2025 – 12/2025</dd>
+      <dt>Team</dt><dd class="num">5 members</dd>
+      <dt>My role</dt><dd>Team lead · Business Analyst</dd>
+      <dt>DBMS</dt><dd>Microsoft SQL Server</dd>
+    </dl>
+  </div>
+
+  <div class="cols">
+    <div>
+      <h3>The problem</h3>
+      <p>At many Vietnamese research units, patent applications are handled half by hand in Word and Excel. Granted patents live somewhere else, fees and valuations are not recorded, and choosing an International Patent Classification (IPC) code depends on one person's experience.</p>
+      <p>The database covers seven entities: User, Application, Application history, IPC code, IP right, Fee and Right economics.</p>
+      <h3 style="margin-top:28px">The application lifecycle we modelled</h3>
+      <div class="flow" aria-label="Application states">
+        <span class="st">Submitted</span><span class="ar">→</span>
+        <span class="st">Under examination</span><span class="ar">⇄</span>
+        <span class="st">More info requested</span><span class="ar">→</span>
+        <span class="st ok">Accepted</span><span class="ar">/</span>
+        <span class="st no">Rejected</span>
+      </div>
+      <p style="margin-top:12px">Every state change is written to an audit history, and an accepted application becomes an IP right with a certificate number, protection term, owner and economic value.</p>
+    </div>
+    <div>
+      <h3>What I delivered as team lead</h3>
+      <ul class="did">
+        <li>Wrote the project outline the team worked from and drove the write-up.</li>
+        <li>Split the work across five members, set deadlines and ran four review meetings, from scoping the entities to the final test run.</li>
+      </ul>
+      <h3 style="margin-top:28px">Rules enforced in the database</h3>
+      <ul class="plain">
+        <li>Trigger logs every status change with old state, new state, time and note.</li>
+        <li>Trigger creates the IP right automatically when an application is accepted.</li>
+        <li>Trigger blocks deleting a user who still owns an active right.</li>
+        <li>Trigger rejects fees that push an application over its allowed total.</li>
+        <li>Two roles: applicants can only read catalogue tables; admins have full control.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <figure><button class="shot contain" type="button" data-cap="Functional decomposition diagram"><img src="img/ip-fhd.jpg" alt="Functional decomposition diagram" loading="eager"></button><figcaption>Functional decomposition</figcaption></figure>
+    <figure><button class="shot contain" type="button" data-cap="Entity-relationship model"><img src="img/ip-er.jpg" alt="Entity relationship model" loading="eager"></button><figcaption>ER model</figcaption></figure>
+    <figure><button class="shot contain" type="button" data-cap="Relational model in SQL Server"><img src="img/ip-rel.jpg" alt="Relational model" loading="eager"></button><figcaption>Relational model</figcaption></figure>
+    <figure><button class="shot contain" type="button" data-cap="Trigger: cap the total fee of an application"><img src="img/ip-trigger.jpg" alt="SQL trigger code" loading="eager"></button><figcaption>Trigger: fee cap</figcaption></figure>
+    <figure><button class="shot contain" type="button" data-cap="Function: flag applications whose fees outweigh their estimated value"><img src="img/ip-func.jpg" alt="SQL function code" loading="eager"></button><figcaption>Function: economic risk</figcaption></figure>
+    <figure><button class="shot" type="button" data-cap="AI suggests an IPC code with a confidence score when a new application is entered"><img src="img/ip-ai.jpg" alt="AI IPC suggestion in the application form" loading="eager"></button><figcaption>AI suggests the IPC code</figcaption></figure>
+    <figure class="wide"><button class="shot" type="button" data-cap="Application management screen"><img src="img/ip-ui.jpg" alt="Application management screen" loading="eager"></button><figcaption>Application management screen</figcaption></figure>
+    <figure><button class="shot" type="button" data-cap="Progress report with AI-written analysis"><img src="img/ip-report.jpg" alt="Progress report with AI analysis" loading="eager"></button><figcaption>Report with AI-written analysis</figcaption></figure>
+  </div>
+</article>
+
+<!-- PRJ-03 -->
+<article class="case" id="hr" aria-labelledby="h-h">
+  <div class="case-top">
+    <div>
+      <p class="pid">PRJ-03 · DATABASE ADMINISTRATION</p>
+      <h2 id="h-h">HR records &amp; activity management</h2>
+      <p class="lede">A database for a small or mid-sized company's HR office: employee files, labour contracts with insurance, business trips and the reports managers ask for.</p>
+    </div>
+    <dl class="meta">
+      <dt>Course</dt><dd>Database Administration, TMU</dd>
+      <dt>When</dt><dd class="num">09/2025 – 10/2025</dd>
+      <dt>Team</dt><dd class="num">5 members</dd>
+      <dt>My role</dt><dd>Team lead · Business Analyst</dd>
+      <dt>Peer rating</dt><dd class="num">10 / 10</dd>
+    </dl>
+  </div>
+
+  <div class="cols">
+    <div>
+      <h3>The problem</h3>
+      <p>HR teams that run on spreadsheets lose track of contracts that are about to expire, and business-trip history never reaches performance reviews. We scoped the system to four function groups so it stays small enough to maintain: employee records, contracts (with automatic insurance records), business trips, and reports.</p>
+      <h3 style="margin-top:28px">What I delivered</h3>
+      <ul class="did">
+        <li>Wrote the outline, split the work and stated the problem.</li>
+        <li>Built the ER model and the physical design, then installed the database.</li>
+        <li>Wrote the reporting queries and views, including the contract expiry alert on the right.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Contract expiry alert (my view)</h3>
+      <pre class="code" aria-label="SQL view"><span class="c">-- Contracts ending in the next 30 days, ranked by urgency</span>
+<span class="k">CREATE OR ALTER VIEW</span> v_HopDong_SapHetHan <span class="k">AS</span>
+<span class="k">SELECT</span> hd.MAHD, nv.MANV, nv.HOTEN, pb.TENPHONG,
+       hd.LOAIHD, hd.NGAYKT,
+       <span class="k">DATEDIFF</span>(DAY, <span class="k">GETDATE</span>(), hd.NGAYKT) <span class="k">AS</span> ConLai_Ngay,
+       <span class="k">CASE</span>
+         <span class="k">WHEN DATEDIFF</span>(DAY, <span class="k">GETDATE</span>(), hd.NGAYKT) &lt;= 7  <span class="k">THEN</span> <span class="s">N'KHẨN CẤP'</span>
+         <span class="k">WHEN DATEDIFF</span>(DAY, <span class="k">GETDATE</span>(), hd.NGAYKT) &lt;= 15 <span class="k">THEN</span> <span class="s">N'CẢNH BÁO CAO'</span>
+         <span class="k">ELSE</span> <span class="s">N'Cảnh báo sớm'</span>
+       <span class="k">END AS</span> MucDo
+<span class="k">FROM</span> HOPDONG hd
+<span class="k">JOIN</span> NHANVIEN nv <span class="k">ON</span> hd.MANV = nv.MANV
+<span class="k">JOIN</span> PHONGBAN pb <span class="k">ON</span> nv.MAPHONG = pb.MAPHONG
+<span class="k">WHERE</span> hd.TRANGTHAI = <span class="s">N'Có hiệu lực'</span>
+  <span class="k">AND</span> hd.NGAYKT <span class="k">BETWEEN GETDATE</span>() <span class="k">AND DATEADD</span>(DAY, 30, <span class="k">GETDATE</span>());</pre>
+      <p class="note">Three urgency levels (7, 15 and 30 days) so HR can act on the most urgent renewals first.</p>
+    </div>
+  </div>
+
+  <div class="gallery">
+    <figure><button class="shot contain" type="button" data-cap="Functional decomposition diagram"><img src="img/hr-fhd.jpg" alt="Functional decomposition diagram" loading="eager"></button><figcaption>Functional decomposition</figcaption></figure>
+    <figure><button class="shot contain" type="button" data-cap="ER model"><img src="img/hr-er.jpg" alt="ER model" loading="eager"></button><figcaption><span class="tag">My work</span>ER model</figcaption></figure>
+    <figure><button class="shot contain" type="button" data-cap="Physical relational model"><img src="img/hr-rel.jpg" alt="Relational model" loading="eager"></button><figcaption><span class="tag">My work</span>Physical design</figcaption></figure>
+    <figure class="wide"><button class="shot contain" type="button" data-cap="Query: top 3 departments by business-trip days and average salary"><img src="img/hr-query.jpg" alt="SQL query code" loading="eager"></button><figcaption><span class="tag">My work</span>Query: top 3 departments</figcaption></figure>
+    <figure><button class="shot contain" type="button" data-cap="Trigger that prevents overlapping business trips (team deliverable)"><img src="img/hr-trigger.jpg" alt="Trigger code" loading="eager"></button><figcaption>Trigger: no overlapping trips</figcaption></figure>
+    <figure><button class="shot" type="button" data-cap="Home screen"><img src="img/hr-ui.jpg" alt="Home screen of the HR system" loading="eager"></button><figcaption>Home screen</figcaption></figure>
+    <figure><button class="shot" type="button" data-cap="Reports and statistics"><img src="img/hr-report.jpg" alt="Reports screen" loading="eager"></button><figcaption>Reports</figcaption></figure>
+  </div>
+</article>
+
+<!-- PRJ-04 -->
 <article class="case" id="cinema" aria-labelledby="c-h">
   <div class="case-top">
     <div>
-      <p class="pid">PRJ-02 · SYSTEMS ANALYSIS &amp; DESIGN</p>
+      <p class="pid">PRJ-04 · SYSTEMS ANALYSIS &amp; DESIGN</p>
       <h2 id="c-h">Cinema ticket booking system</h2>
       <p class="lede">A full analysis and design package for an online cinema: customers pick exact seats, apply promotions and receive QR e-tickets; staff schedule showtimes, design seat maps and track revenue.</p>
     </div>
@@ -632,127 +753,6 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     <figure class="wide"><button class="shot" type="button" data-cap="High-fidelity seat selection screen built from the wireframe (team deliverable)"><img src="img/c-ui-seat.jpg" alt="High-fidelity seat selection screen" loading="eager"></button><figcaption>Wireframe to UI: seat selection</figcaption></figure>
   </div>
   <p class="note">Diagrams are in Vietnamese, the language of the original deliverable. Click any image to enlarge.</p>
-</article>
-
-<!-- PRJ-03 -->
-<article class="case" id="patent" aria-labelledby="p-h">
-  <div class="case-top">
-    <div>
-      <p class="pid">PRJ-03 · DATABASE ADMINISTRATION</p>
-      <h2 id="p-h">Patent registration &amp; IP rights management</h2>
-      <p class="lede">A SQL Server database that follows a patent from the first application to a granted, valued and transferable intellectual property right, with AI suggestions for patent classification.</p>
-    </div>
-    <dl class="meta">
-      <dt>Course</dt><dd>Database Administration, TMU</dd>
-      <dt>When</dt><dd class="num">11/2025 – 12/2025</dd>
-      <dt>Team</dt><dd class="num">5 members</dd>
-      <dt>My role</dt><dd>Team lead · Business Analyst</dd>
-      <dt>DBMS</dt><dd>Microsoft SQL Server</dd>
-    </dl>
-  </div>
-
-  <div class="cols">
-    <div>
-      <h3>The problem</h3>
-      <p>At many Vietnamese research units, patent applications are handled half by hand in Word and Excel. Granted patents live somewhere else, fees and valuations are not recorded, and choosing an International Patent Classification (IPC) code depends on one person's experience.</p>
-      <p>The database covers seven entities: User, Application, Application history, IPC code, IP right, Fee and Right economics.</p>
-      <h3 style="margin-top:28px">The application lifecycle we modelled</h3>
-      <div class="flow" aria-label="Application states">
-        <span class="st">Submitted</span><span class="ar">→</span>
-        <span class="st">Under examination</span><span class="ar">⇄</span>
-        <span class="st">More info requested</span><span class="ar">→</span>
-        <span class="st ok">Accepted</span><span class="ar">/</span>
-        <span class="st no">Rejected</span>
-      </div>
-      <p style="margin-top:12px">Every state change is written to an audit history, and an accepted application becomes an IP right with a certificate number, protection term, owner and economic value.</p>
-    </div>
-    <div>
-      <h3>What I delivered as team lead</h3>
-      <ul class="did">
-        <li>Wrote the project outline the team worked from and drove the write-up.</li>
-        <li>Split the work across five members, set deadlines and ran four review meetings, from scoping the entities to the final test run.</li>
-      </ul>
-      <h3 style="margin-top:28px">Rules enforced in the database</h3>
-      <ul class="plain">
-        <li>Trigger logs every status change with old state, new state, time and note.</li>
-        <li>Trigger creates the IP right automatically when an application is accepted.</li>
-        <li>Trigger blocks deleting a user who still owns an active right.</li>
-        <li>Trigger rejects fees that push an application over its allowed total.</li>
-        <li>Two roles: applicants can only read catalogue tables; admins have full control.</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="gallery">
-    <figure><button class="shot contain" type="button" data-cap="Functional decomposition diagram"><img src="img/ip-fhd.jpg" alt="Functional decomposition diagram" loading="eager"></button><figcaption>Functional decomposition</figcaption></figure>
-    <figure><button class="shot contain" type="button" data-cap="Entity-relationship model"><img src="img/ip-er.jpg" alt="Entity relationship model" loading="eager"></button><figcaption>ER model</figcaption></figure>
-    <figure><button class="shot contain" type="button" data-cap="Relational model in SQL Server"><img src="img/ip-rel.jpg" alt="Relational model" loading="eager"></button><figcaption>Relational model</figcaption></figure>
-    <figure><button class="shot contain" type="button" data-cap="Trigger: cap the total fee of an application"><img src="img/ip-trigger.jpg" alt="SQL trigger code" loading="eager"></button><figcaption>Trigger: fee cap</figcaption></figure>
-    <figure><button class="shot contain" type="button" data-cap="Function: flag applications whose fees outweigh their estimated value"><img src="img/ip-func.jpg" alt="SQL function code" loading="eager"></button><figcaption>Function: economic risk</figcaption></figure>
-    <figure><button class="shot" type="button" data-cap="AI suggests an IPC code with a confidence score when a new application is entered"><img src="img/ip-ai.jpg" alt="AI IPC suggestion in the application form" loading="eager"></button><figcaption>AI suggests the IPC code</figcaption></figure>
-    <figure class="wide"><button class="shot" type="button" data-cap="Application management screen"><img src="img/ip-ui.jpg" alt="Application management screen" loading="eager"></button><figcaption>Application management screen</figcaption></figure>
-    <figure><button class="shot" type="button" data-cap="Progress report with AI-written analysis"><img src="img/ip-report.jpg" alt="Progress report with AI analysis" loading="eager"></button><figcaption>Report with AI-written analysis</figcaption></figure>
-  </div>
-</article>
-
-<!-- PRJ-04 -->
-<article class="case" id="hr" aria-labelledby="h-h">
-  <div class="case-top">
-    <div>
-      <p class="pid">PRJ-04 · DATABASE ADMINISTRATION</p>
-      <h2 id="h-h">HR records &amp; activity management</h2>
-      <p class="lede">A database for a small or mid-sized company's HR office: employee files, labour contracts with insurance, business trips and the reports managers ask for.</p>
-    </div>
-    <dl class="meta">
-      <dt>Course</dt><dd>Database Administration, TMU</dd>
-      <dt>When</dt><dd class="num">09/2025 – 10/2025</dd>
-      <dt>Team</dt><dd class="num">5 members</dd>
-      <dt>My role</dt><dd>Team lead · Business Analyst</dd>
-      <dt>Peer rating</dt><dd class="num">10 / 10</dd>
-    </dl>
-  </div>
-
-  <div class="cols">
-    <div>
-      <h3>The problem</h3>
-      <p>HR teams that run on spreadsheets lose track of contracts that are about to expire, and business-trip history never reaches performance reviews. We scoped the system to four function groups so it stays small enough to maintain: employee records, contracts (with automatic insurance records), business trips, and reports.</p>
-      <h3 style="margin-top:28px">What I delivered</h3>
-      <ul class="did">
-        <li>Wrote the outline, split the work and stated the problem.</li>
-        <li>Built the ER model and the physical design, then installed the database.</li>
-        <li>Wrote the reporting queries and views, including the contract expiry alert on the right.</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Contract expiry alert (my view)</h3>
-      <pre class="code" aria-label="SQL view"><span class="c">-- Contracts ending in the next 30 days, ranked by urgency</span>
-<span class="k">CREATE OR ALTER VIEW</span> v_HopDong_SapHetHan <span class="k">AS</span>
-<span class="k">SELECT</span> hd.MAHD, nv.MANV, nv.HOTEN, pb.TENPHONG,
-       hd.LOAIHD, hd.NGAYKT,
-       <span class="k">DATEDIFF</span>(DAY, <span class="k">GETDATE</span>(), hd.NGAYKT) <span class="k">AS</span> ConLai_Ngay,
-       <span class="k">CASE</span>
-         <span class="k">WHEN DATEDIFF</span>(DAY, <span class="k">GETDATE</span>(), hd.NGAYKT) &lt;= 7  <span class="k">THEN</span> <span class="s">N'KHẨN CẤP'</span>
-         <span class="k">WHEN DATEDIFF</span>(DAY, <span class="k">GETDATE</span>(), hd.NGAYKT) &lt;= 15 <span class="k">THEN</span> <span class="s">N'CẢNH BÁO CAO'</span>
-         <span class="k">ELSE</span> <span class="s">N'Cảnh báo sớm'</span>
-       <span class="k">END AS</span> MucDo
-<span class="k">FROM</span> HOPDONG hd
-<span class="k">JOIN</span> NHANVIEN nv <span class="k">ON</span> hd.MANV = nv.MANV
-<span class="k">JOIN</span> PHONGBAN pb <span class="k">ON</span> nv.MAPHONG = pb.MAPHONG
-<span class="k">WHERE</span> hd.TRANGTHAI = <span class="s">N'Có hiệu lực'</span>
-  <span class="k">AND</span> hd.NGAYKT <span class="k">BETWEEN GETDATE</span>() <span class="k">AND DATEADD</span>(DAY, 30, <span class="k">GETDATE</span>());</pre>
-      <p class="note">Three urgency levels (7, 15 and 30 days) so HR can act on the most urgent renewals first.</p>
-    </div>
-  </div>
-
-  <div class="gallery">
-    <figure><button class="shot contain" type="button" data-cap="Functional decomposition diagram"><img src="img/hr-fhd.jpg" alt="Functional decomposition diagram" loading="eager"></button><figcaption>Functional decomposition</figcaption></figure>
-    <figure><button class="shot contain" type="button" data-cap="ER model"><img src="img/hr-er.jpg" alt="ER model" loading="eager"></button><figcaption><span class="tag">My work</span>ER model</figcaption></figure>
-    <figure><button class="shot contain" type="button" data-cap="Physical relational model"><img src="img/hr-rel.jpg" alt="Relational model" loading="eager"></button><figcaption><span class="tag">My work</span>Physical design</figcaption></figure>
-    <figure class="wide"><button class="shot contain" type="button" data-cap="Query: top 3 departments by business-trip days and average salary"><img src="img/hr-query.jpg" alt="SQL query code" loading="eager"></button><figcaption><span class="tag">My work</span>Query: top 3 departments</figcaption></figure>
-    <figure><button class="shot contain" type="button" data-cap="Trigger that prevents overlapping business trips (team deliverable)"><img src="img/hr-trigger.jpg" alt="Trigger code" loading="eager"></button><figcaption>Trigger: no overlapping trips</figcaption></figure>
-    <figure><button class="shot" type="button" data-cap="Home screen"><img src="img/hr-ui.jpg" alt="Home screen of the HR system" loading="eager"></button><figcaption>Home screen</figcaption></figure>
-    <figure><button class="shot" type="button" data-cap="Reports and statistics"><img src="img/hr-report.jpg" alt="Reports screen" loading="eager"></button><figcaption>Reports</figcaption></figure>
-  </div>
 </article>
 
 <!-- BUILT -->
