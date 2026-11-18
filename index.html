@@ -217,6 +217,14 @@ pre.code{background:var(--code-bg);color:var(--code-ink);font-family:var(--mono)
 .story .trace{margin-top:auto;padding-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
 @media (max-width:900px){.stories{grid-template-columns:minmax(0,1fr)}}
 
+/* tabs */
+.tabs{display:flex;gap:2px;margin-top:40px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs [role=tab]{flex:0 0 auto;font:600 14.5px var(--body);color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;padding:12px 16px;cursor:pointer;white-space:nowrap;border-radius:6px 6px 0 0}
+.tabs [role=tab]:hover{color:var(--ink);background:var(--sunk)}
+.tabs [role=tab][aria-selected=true]{color:var(--accent);border-bottom-color:var(--accent)}
+.tabpanel>:first-child{margin-top:28px!important}
+
 /* collapsible galleries */
 .gallery.collapsed>figure.extra{display:none}
 .more{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font:600 14px var(--body);color:var(--accent);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer}
@@ -332,6 +340,15 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     <div class="stat" role="listitem"><b>300M</b><span>VND founder-approval threshold</span></div>
   </div>
 
+  <div class="tabs" role="tablist" aria-label="MIS TALENT case study sections">
+    <button type="button" role="tab" id="mt-t-overview" aria-controls="mt-p-overview" aria-selected="true">Overview</button>
+    <button type="button" role="tab" id="mt-t-logic" aria-controls="mt-p-logic" aria-selected="false" tabindex="-1">Rules &amp; logic</button>
+    <button type="button" role="tab" id="mt-t-process" aria-controls="mt-p-process" aria-selected="false" tabindex="-1">Process (BPMN)</button>
+    <button type="button" role="tab" id="mt-t-req" aria-controls="mt-p-req" aria-selected="false" tabindex="-1">User stories &amp; AC</button>
+    <button type="button" role="tab" id="mt-t-diagrams" aria-controls="mt-p-diagrams" aria-selected="false" tabindex="-1">Data flow diagrams</button>
+  </div>
+
+  <div class="tabpanel" role="tabpanel" id="mt-p-overview" aria-labelledby="mt-t-overview">
   <div class="callout">
     <h4>Try the live prototype: OPC Decision System</h4>
     <p style="color:var(--ink-2);font-size:15px;margin-bottom:10px">The team's founder dashboard runs online with four workspaces, used in this order:</p>
@@ -370,7 +387,9 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     <div><p class="step">Agent 3</p><h4>Decision &amp; Partner</h4><p>Filters bank products, ranks them by total cost of funds and collateral, scores confidence and writes the Decision Card.</p><p class="out">→ recommendation, 3 reasons, 1 safeguard</p></div>
     <div><p class="step">Human in the loop</p><h4>Founder approval</h4><p>Financing above 300 million VND, or sending documents to a bank, waits until the founder confirms on the dashboard.</p><p class="out">→ approved Decision Card</p></div>
   </div>
+  </div>
 
+  <div class="tabpanel" role="tabpanel" id="mt-p-logic" aria-labelledby="mt-t-logic">
   <div class="cols">
     <div>
       <h3>Numbers in code, judgement in the LLM</h3>
@@ -400,7 +419,9 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
       </table>
     </div>
   </div>
+  </div>
 
+  <div class="tabpanel" role="tabpanel" id="mt-p-process" aria-labelledby="mt-t-process">
   <div style="margin-top:44px" id="m-bpmn">
     <h3 class="sub">Process model: funding the contract (BPMN 2.0)</h3>
     <p style="color:var(--ink-2);max-width:72ch;margin-bottom:16px">Who does what, and where the process stops. Three exclusive gateways protect the founder from a bad loan: no qualifying product, weak evidence, or an amount large enough to need a human signature.</p>
@@ -513,7 +534,9 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
       <span><i style="border:1.4px solid var(--ink-2);transform:rotate(45deg) scale(.8)"></i>Exclusive gateway</span>
     </div>
   </div>
+  </div>
 
+  <div class="tabpanel" role="tabpanel" id="mt-p-req" aria-labelledby="mt-t-req">
   <div style="margin-top:44px" id="m-stories">
     <h3 class="sub">Requirements as user stories</h3>
     <p style="color:var(--ink-2);max-width:72ch;margin-bottom:16px">The business rules behind the three gateways, written so that a developer can build each one and a tester can pass or fail it.</p>
@@ -556,12 +579,15 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
       </article>
     </div>
   </div>
+  </div>
 
+  <div class="tabpanel" role="tabpanel" id="mt-p-diagrams" aria-labelledby="mt-t-diagrams">
   <div class="gallery two">
     <figure><button class="shot contain" type="button" data-cap="Data flow diagram, level 0: the agent system with customers, the founder and bank partners"><img src="img/mt-dfd0.jpg" alt="Level 0 data flow diagram" loading="eager"></button><figcaption><span class="tag">My work</span>DFD level 0</figcaption></figure>
     <figure><button class="shot contain" type="button" data-cap="Data flow diagram, level 1: the three agents, their data stores and the approval loop"><img src="img/mt-dfd1.jpg" alt="Level 1 data flow diagram" loading="eager"></button><figcaption><span class="tag">My work</span>DFD level 1</figcaption></figure>
   </div>
   <p class="note">The company, customers and banks in the case are simulated competition data. Diagrams are in Vietnamese, the language of the submission.</p>
+  </div>
 </article>
 
 <!-- PRJ-02 -->
@@ -896,10 +922,37 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
       var open=g.classList.toggle('collapsed')===false;
       b.setAttribute('aria-expanded',open?'true':'false');
       b.innerHTML=open?'Show fewer <span aria-hidden="true">↑</span>':label+' <span aria-hidden="true">↓</span>';
-      if(!open)g.scrollIntoView({block:'start'});
+      if(!open)window.scrollTo({top:g.getBoundingClientRect().top+window.scrollY-80});
     });
     g.insertAdjacentElement('afterend',b);
   });
+  var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
+  function showTab(t,focus){
+    t.parentNode.querySelectorAll('[role=tab]').forEach(function(o){
+      var on=o===t;o.setAttribute('aria-selected',on?'true':'false');o.tabIndex=on?0:-1;
+      document.getElementById(o.getAttribute('aria-controls')).hidden=!on;
+    });
+    if(focus)t.focus();
+  }
+  tabs.forEach(function(t){
+    if(t.getAttribute('aria-selected')!=='true')document.getElementById(t.getAttribute('aria-controls')).hidden=true;
+    t.addEventListener('click',function(){showTab(t)});
+    t.addEventListener('keydown',function(e){
+      var sib=[].slice.call(t.parentNode.querySelectorAll('[role=tab]')),i=sib.indexOf(t);
+      if(e.key==='ArrowRight'){e.preventDefault();showTab(sib[(i+1)%sib.length],true);}
+      if(e.key==='ArrowLeft'){e.preventDefault();showTab(sib[(i-1+sib.length)%sib.length],true);}
+    });
+  });
+  function reveal(id){
+    var el=id&&document.getElementById(id);if(!el)return;
+    var p=el.closest('[role=tabpanel]');
+    if(p&&p.hidden)showTab(document.getElementById(p.getAttribute('aria-labelledby')));
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a[href^="#"]');if(a)reveal(a.getAttribute('href').slice(1));
+  });
+  reveal(location.hash.slice(1));
+  window.addEventListener('hashchange',function(){reveal(location.hash.slice(1))});
   document.getElementById('lb-close').addEventListener('click',close);
   lb.addEventListener('click',function(e){if(e.target===lb)close();});
 })();
