@@ -63,7 +63,17 @@ p{margin:0}
 .hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:800}
 .hero h1 .role{display:block;font-size:.42em;font-weight:650;color:var(--accent);margin-top:14px;letter-spacing:-.005em}
 .thesis{font-size:clamp(18px,2vw,21px);color:var(--ink-2);max-width:40ch;margin-top:28px;line-height:1.45}
-.thesis-sub{font-size:16px;color:var(--muted);max-width:52ch;margin-top:16px;line-height:1.6}
+.toc{margin-top:28px;max-width:560px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--marker);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+.toc-h{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line);background:var(--sunk)}
+.toc a{display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);transition:background .15s}
+.toc a:last-child{border-bottom:0}
+.toc a:hover{background:var(--accent-soft)}
+.toc .tid{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.toc .tt b{display:block;font-weight:600;font-size:15px;line-height:1.3}
+.toc .tt small{display:block;font-size:12.5px;color:var(--muted);margin-top:1px}
+.toc .pill{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--ink-2);white-space:nowrap}
+.toc .pill.hl{background:var(--marker);border-color:var(--marker);color:var(--marker-ink);font-weight:500}
+@media (max-width:560px){.toc a{grid-template-columns:52px minmax(0,1fr)}.toc .pill{grid-column:2;justify-self:start}}
 .spec{background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
 .spec header{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--sunk);font-family:var(--mono);font-size:12px;color:var(--muted)}
 .spec dl{margin:0;display:grid;grid-template-columns:auto 1fr}
@@ -251,7 +261,14 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
   <div>
     <h1>Nguyễn Khắc Quyết<span class="role">Business Analyst</span></h1>
     <p class="thesis">I'm a Management Information Systems student at Thuong Mai University who enjoys working out how a business really runs and writing it down so a team can build it.</p>
-    <p class="thesis-sub">This portfolio covers four analysis projects: a credit and cash-flow decision workflow that placed Second Runner-Up at MIS TALENT 2026, two SQL Server databases for patent rights and HR records, and a cinema booking system. I led the team on three of them. It ends with two web apps I built on my own to test my specs in code.</p>
+    <nav class="toc" aria-label="Projects in this portfolio">
+      <p class="toc-h">In this portfolio</p>
+      <a href="#mistalent"><span class="tid">PRJ-01</span><span class="tt"><b>Credit &amp; cash-flow decision workflow</b><small>MIS TALENT 2026 · BA &amp; agent designer</small></span><span class="pill hl">Second Runner-Up</span></a>
+      <a href="#patent"><span class="tid">PRJ-02</span><span class="tt"><b>Patent &amp; IP rights database</b><small>SQL Server · Team lead</small></span></a>
+      <a href="#hr"><span class="tid">PRJ-03</span><span class="tt"><b>HR records database</b><small>SQL Server · Team lead</small></span><span class="pill">Peer rating 10/10</span></a>
+      <a href="#cinema"><span class="tid">PRJ-04</span><span class="tt"><b>Cinema ticket booking system</b><small>Systems analysis &amp; design · Team lead of 9</small></span><span class="pill hl">Score 9.5/10</span></a>
+      <a href="#built"><span class="tid">APPS</span><span class="tt"><b>Two web apps, built solo</b><small>CineDiary · Việt Nam Travel · PHP &amp; MySQL</small></span></a>
+    </nav>
   </div>
   <aside class="spec" aria-label="Profile summary">
     <dl>
