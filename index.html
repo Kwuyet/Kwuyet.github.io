@@ -217,6 +217,11 @@ pre.code{background:var(--code-bg);color:var(--code-ink);font-family:var(--mono)
 .story .trace{margin-top:auto;padding-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
 @media (max-width:900px){.stories{grid-template-columns:minmax(0,1fr)}}
 
+/* collapsible galleries */
+.gallery.collapsed>figure.extra{display:none}
+.more{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font:600 14px var(--body);color:var(--accent);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer}
+.more:hover{border-color:var(--accent)}
+
 footer{padding-block:48px 64px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
 
 /* lightbox */
@@ -608,7 +613,7 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     </div>
   </div>
 
-  <div class="gallery">
+  <div class="gallery" data-show="3">
     <figure><button class="shot contain" type="button" data-cap="Functional decomposition diagram"><img src="img/ip-fhd.jpg" alt="Functional decomposition diagram" loading="eager"></button><figcaption>Functional decomposition</figcaption></figure>
     <figure><button class="shot contain" type="button" data-cap="Entity-relationship model"><img src="img/ip-er.jpg" alt="Entity relationship model" loading="eager"></button><figcaption>ER model</figcaption></figure>
     <figure><button class="shot contain" type="button" data-cap="Relational model in SQL Server"><img src="img/ip-rel.jpg" alt="Relational model" loading="eager"></button><figcaption>Relational model</figcaption></figure>
@@ -669,7 +674,7 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     </div>
   </div>
 
-  <div class="gallery">
+  <div class="gallery" data-show="3">
     <figure><button class="shot contain" type="button" data-cap="Functional decomposition diagram"><img src="img/hr-fhd.jpg" alt="Functional decomposition diagram" loading="eager"></button><figcaption>Functional decomposition</figcaption></figure>
     <figure><button class="shot contain" type="button" data-cap="ER model"><img src="img/hr-er.jpg" alt="ER model" loading="eager"></button><figcaption><span class="tag">My work</span>ER model</figcaption></figure>
     <figure><button class="shot contain" type="button" data-cap="Physical relational model"><img src="img/hr-rel.jpg" alt="Relational model" loading="eager"></button><figcaption><span class="tag">My work</span>Physical design</figcaption></figure>
@@ -741,7 +746,7 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     </div>
   </div>
 
-  <div class="gallery">
+  <div class="gallery" data-show="5">
     <figure class="wide"><button class="shot contain" type="button" data-cap="UC04 Select showtime &amp; seats"><img src="img/c-uc-seat.jpg" alt="Use case diagram for selecting a showtime and seats" loading="eager"></button><figcaption><span class="tag">My work</span>UC04 Select showtime &amp; seats</figcaption></figure>
     <figure><button class="shot contain" type="button" data-cap="Activity diagram: select showtime &amp; seats"><img src="img/c-ad-seat.jpg" alt="Activity diagram for seat selection" loading="eager"></button><figcaption><span class="tag">My work</span>Activity: seat selection</figcaption></figure>
     <figure><button class="shot contain" type="button" data-cap="UC12 Manage cinemas &amp; seat maps"><img src="img/c-uc-cinema.jpg" alt="Use case diagram for managing cinemas and seat maps" loading="eager"></button><figcaption><span class="tag">My work</span>UC12 Cinemas &amp; seat maps</figcaption></figure>
@@ -791,7 +796,7 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     <div><h4>Administration</h4><ul><li>Dashboard with date-range KPIs and trend chart</li><li>Moderation queue: hide, restore or delete in bulk</li><li>Lock accounts and change roles</li><li>Import films from CSV</li></ul></div>
   </div>
 
-  <div class="gallery">
+  <div class="gallery" data-show="2">
     <figure class="wide"><button class="shot" type="button" data-cap="CineDiary home page"><img src="img/cd-home.jpg" alt="CineDiary home page" loading="eager"></button><figcaption>Home</figcaption></figure>
     <figure><button class="shot" type="button" data-cap="Discover: latest community reviews"><img src="img/cd-discover.jpg" alt="Discover page" loading="eager"></button><figcaption>Discover</figcaption></figure>
     <figure><button class="shot" type="button" data-cap="Film page with reviews"><img src="img/cd-movie.jpg" alt="Film page" loading="eager"></button><figcaption>Film page</figcaption></figure>
@@ -839,7 +844,7 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     <div><h4>Administration</h4><ul><li>KPIs, 12-month trend, category mix</li><li>Export reports to Excel and PDF</li><li>Moderate posts and comments</li><li>Manage users, categories, places, guides</li></ul></div>
   </div>
 
-  <div class="gallery">
+  <div class="gallery" data-show="2">
     <figure class="wide"><button class="shot" type="button" data-cap="Home page with the 3D flight hero"><img src="img/tr-3d.jpg" alt="Home page with a 3D airplane over a mountain road" loading="eager"></button><figcaption>Home with 3D flight hero</figcaption></figure>
     <figure><button class="shot" type="button" data-cap="Home page"><img src="img/tr-home.jpg" alt="Home page hero" loading="eager"></button><figcaption>Home</figcaption></figure>
     <figure><button class="shot" type="button" data-cap="Explore destination guides"><img src="img/tr-explore.jpg" alt="Explore page" loading="eager"></button><figcaption>Explore guides</figcaption></figure>
@@ -879,6 +884,22 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     });
   });
   function close(){if(lb.close){lb.close();}else{lb.removeAttribute('open');}}
+  document.querySelectorAll('.gallery[data-show]').forEach(function(g){
+    var figs=g.querySelectorAll(':scope>figure'),n=parseInt(g.getAttribute('data-show'),10);
+    if(figs.length<=n)return;
+    for(var i=n;i<figs.length;i++)figs[i].classList.add('extra');
+    g.classList.add('collapsed');
+    var b=document.createElement('button');b.type='button';b.className='more';b.setAttribute('aria-expanded','false');
+    var label='Show all '+figs.length+' images';
+    b.innerHTML=label+' <span aria-hidden="true">↓</span>';
+    b.addEventListener('click',function(){
+      var open=g.classList.toggle('collapsed')===false;
+      b.setAttribute('aria-expanded',open?'true':'false');
+      b.innerHTML=open?'Show fewer <span aria-hidden="true">↑</span>':label+' <span aria-hidden="true">↓</span>';
+      if(!open)g.scrollIntoView({block:'start'});
+    });
+    g.insertAdjacentElement('afterend',b);
+  });
   document.getElementById('lb-close').addEventListener('click',close);
   lb.addEventListener('click',function(e){if(e.target===lb)close();});
 })();
