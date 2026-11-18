@@ -179,17 +179,6 @@ pre.code{background:var(--code-bg);color:var(--code-ink);font-family:var(--mono)
 .callout h4{margin:0 0 8px;font-family:var(--display);font-size:18px}
 .callout ol{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--ink-2);font-size:15px}
 
-/* approach */
-.approach-sec{padding-block:36px;scroll-margin-top:64px}
-.approach-h{font-size:20px;font-weight:650;margin-bottom:14px}
-.approach{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
-.approach li{padding:12px 16px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
-.approach li:last-child{border-right:0}
-.approach .step{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
-.approach .ev{font-size:13.5px;color:var(--muted);line-height:1.45}
-.approach .ev a{color:var(--ink-2);white-space:nowrap}
-@media (max-width:900px){.approach{grid-template-columns:minmax(0,1fr)}.approach li{flex-direction:row;align-items:baseline;gap:12px;border-right:0;border-bottom:1px solid var(--line);padding:10px 14px}.approach li:last-child{border-bottom:0}.approach .step{flex:0 0 112px;white-space:nowrap}}
-
 /* bpmn */
 #m-bpmn,#m-stories{scroll-margin-top:72px}
 .bpmn-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
@@ -247,7 +236,6 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
   <div class="wrap">
     <a class="brand" href="#top">Nguyễn Khắc Quyết</a>
     <ul>
-      <li><a class="l" href="#approach">How I work</a></li>
       <li><a class="l" href="#mistalent">Credit decision</a></li>
       <li><a class="l" href="#patent">Patent &amp; IP</a></li>
       <li><a class="l" href="#hr">HR records</a></li>
@@ -277,18 +265,6 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     </dl>
   </aside>
 </header>
-
-<!-- APPROACH -->
-<section class="block approach-sec" id="approach" aria-labelledby="a-h">
-  <h2 id="a-h" class="approach-h">How I work as a BA</h2>
-  <ol class="approach">
-    <li><span class="step">01 · Elicit</span><span class="ev"><a href="#mistalent">OPC case analysis</a> · <a href="#cinema">7 process descriptions</a></span></li>
-    <li><span class="step">02 · Model</span><span class="ev"><a href="#m-bpmn">BPMN</a> · <a href="#mistalent">DFD 0/1</a> · <a href="#cinema">UC04, UC12</a></span></li>
-    <li><span class="step">03 · Specify</span><span class="ev"><a href="#m-stories">User stories &amp; AC</a> · <a href="#mistalent">RR-001–007</a> · <a href="#cinema">~140 FRs</a></span></li>
-    <li><span class="step">04 · Validate</span><span class="ev"><a href="#patent">Triggers</a> · <a href="#hr">SQL views</a> · <a href="#built">2 web apps</a></span></li>
-    <li><span class="step">05 · Measure</span><span class="ev"><a href="#mistalent">Crisis Center before/after</a> · <a href="#built">KPI dashboards</a></span></li>
-  </ol>
-</section>
 
 <!-- PRJ-01 -->
 <article class="case" id="mistalent" aria-labelledby="m-h">
