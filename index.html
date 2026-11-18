@@ -98,14 +98,10 @@ p{margin:0}
 .hero h1 .role{display:table;font-size:.34em;font-weight:650;color:#0B1630;background:var(--marker);padding:4px 14px;border-radius:8px;margin-top:18px;letter-spacing:-.005em;line-height:1.3}
 .thesis{font-size:clamp(18px,2vw,21px);color:#C9D3E3;max-width:40ch;margin-top:24px;line-height:1.5}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.btn-primary,.btn-ghost{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;text-decoration:none;padding:12px 20px;border-radius:10px;transition:transform .15s,background .15s,border-color .15s}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;text-decoration:none;padding:12px 20px;border-radius:10px;transition:transform .15s,background .15s,border-color .15s}
 .btn-primary{background:var(--marker);color:#1D1600}
 .btn-primary:hover{transform:translateY(-2px)}
 .btn-primary span{display:inline-block;animation:nudge 1.8s ease-in-out infinite}
-.btn-ghost{color:#E8EDF4;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.04)}
-.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
-.chips{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px;max-width:520px}
-.chips li{font-family:var(--mono);font-size:12px;color:#B8C4D8;padding:4px 10px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(255,255,255,.04)}
 .hero :focus-visible{outline-color:var(--marker)}
 
 .collage{position:relative;height:430px}
@@ -121,7 +117,7 @@ p{margin:0}
 .collage:hover .w2{transform:rotate(-4deg) translate(-8px,0)}
 .collage:hover .w3{transform:rotate(2deg) translate(4px,6px)}
 
-.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:44px 0 0}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:44px 0 0}
 .kpi{padding:16px 18px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(6px)}
 .kpi dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#9FB0C9}
 .kpi dd{margin:6px 0 0;font-family:var(--display);font-weight:800;font-size:clamp(15px,1.4vw,20px);color:#fff;line-height:1.15}
@@ -142,10 +138,10 @@ p{margin:0}
   .collage{height:300px}
   .w1{height:170px}.w2{height:160px;top:80px}.w3{height:170px}
   .kpis{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:40px}
-  .kpi.hl{grid-column:span 2}
   .kpi dd{font-size:19px}
+  .kpi.hl dd{white-space:normal}
 }
-@media (max-width:560px){.win figcaption{display:none}.collage{height:250px}.w1{height:140px}.w2{height:135px;top:70px}.w3{height:140px}.btn-primary,.btn-ghost{width:100%;justify-content:center}}
+@media (max-width:560px){.win figcaption{display:none}.collage{height:250px}.w1{height:140px}.w2{height:135px;top:70px}.w3{height:140px}.btn-primary{width:100%;justify-content:center}}
 
 /* sections */
 section.block{padding-block:64px;border-top:1px solid var(--line)}
@@ -367,11 +363,7 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
       <p class="thesis">I'm a Management Information Systems student at Thuong Mai University who enjoys working out how a business really runs and writing it down so a team can build it.</p>
       <div class="hero-cta">
         <a class="btn-primary" href="#projects">See my projects <span aria-hidden="true">↓</span></a>
-        <a class="btn-ghost" href="https://mistalent-competition-c8gx.onrender.com/" target="_blank" rel="noopener">Live demo: OPC Decision System <span aria-hidden="true">↗</span></a>
       </div>
-      <ul class="chips" aria-label="Toolkit">
-        <li>BRD</li><li>SRS</li><li>User stories &amp; AC</li><li>BPMN 2.0</li><li>UML</li><li>SQL</li><li>Excel</li><li>Power BI</li><li>Figma</li><li>Draw.io</li>
-      </ul>
     </div>
     <div class="collage" aria-hidden="true">
       <figure class="win w1"><img src="img/mt-dfd1.jpg" alt=""><figcaption>MIS TALENT · data flow</figcaption></figure>
@@ -384,7 +376,6 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     <div class="kpi"><dt>GPA · MIS, TMU</dt><dd class="num">3.64<small>/4.0</small></dd></div>
     <div class="kpi"><dt>English</dt><dd class="num">TOEIC 810</dd></div>
     <div class="kpi"><dt>Student research</dt><dd>Ministerial 3rd prize</dd></div>
-    <div class="kpi"><dt>Graduation</dt><dd class="num">05/2027</dd></div>
   </dl>
 </header>
 
