@@ -223,6 +223,11 @@ pre.code{background:var(--code-bg);color:var(--code-ink);font-family:var(--mono)
 .totop.show{opacity:1;pointer-events:auto;transform:none}
 .totop:hover{border-color:var(--accent)}
 
+/* nav overflow fade */
+.nav ul.over:not(.at-end){-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 40px),transparent)}
+.nav ul.over.scrolled:not(.at-end){-webkit-mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 40px),transparent)}
+.nav ul.over.scrolled.at-end{-webkit-mask-image:linear-gradient(to right,transparent,#000 28px);mask-image:linear-gradient(to right,transparent,#000 28px)}
+
 /* featured case */
 body{overflow-x:clip}
 .case.featured{position:relative;border-top:0;isolation:isolate}
@@ -985,6 +990,12 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
   }
   window.addEventListener('scroll',spy,{passive:true});window.addEventListener('resize',spy);spy();
   document.getElementById('totop').addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  function navFade(){
+    navUl.classList.toggle('over',navUl.scrollWidth>navUl.clientWidth+2);
+    navUl.classList.toggle('scrolled',navUl.scrollLeft>2);
+    navUl.classList.toggle('at-end',navUl.scrollLeft+navUl.clientWidth>=navUl.scrollWidth-2);
+  }
+  navUl.addEventListener('scroll',navFade,{passive:true});window.addEventListener('resize',navFade);navFade();
   document.getElementById('lb-close').addEventListener('click',close);
   lb.addEventListener('click',function(e){if(e.target===lb)close();});
 })();
