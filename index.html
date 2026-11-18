@@ -63,17 +63,26 @@ p{margin:0}
 .hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:800}
 .hero h1 .role{display:block;font-size:.42em;font-weight:650;color:var(--accent);margin-top:14px;letter-spacing:-.005em}
 .thesis{font-size:clamp(18px,2vw,21px);color:var(--ink-2);max-width:40ch;margin-top:28px;line-height:1.45}
-.toc{margin-top:28px;max-width:560px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--marker);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
-.toc-h{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--line);background:var(--sunk)}
-.toc a{display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);transition:background .15s}
-.toc a:last-child{border-bottom:0}
-.toc a:hover{background:var(--accent-soft)}
-.toc .tid{font-family:var(--mono);font-size:12px;color:var(--accent)}
-.toc .tt b{display:block;font-weight:600;font-size:15px;line-height:1.3}
-.toc .tt small{display:block;font-size:12.5px;color:var(--muted);margin-top:1px}
-.toc .pill{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--ink-2);white-space:nowrap}
-.toc .pill.hl{background:var(--marker);border-color:var(--marker);color:var(--marker-ink);font-weight:500}
-@media (max-width:560px){.toc a{grid-template-columns:52px minmax(0,1fr)}.toc .pill{grid-column:2;justify-self:start}}
+.thesis-sub{font-size:16px;color:var(--muted);max-width:52ch;margin-top:16px;line-height:1.6}
+.scroll-cue{display:inline-flex;align-items:center;gap:8px;margin-top:28px;font-size:14px;font-weight:600;color:var(--accent);text-decoration:none;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.scroll-cue:hover{border-color:var(--accent)}
+.scroll-cue span{display:inline-block;animation:nudge 1.8s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+.pgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.pcard{display:flex;flex-direction:column;gap:8px;padding:20px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
+.pcard:hover{border-color:var(--accent);transform:translateY(-2px)}
+.pcard .tid{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.pcard h3{font-size:20px;font-weight:650;line-height:1.2}
+.pcard p{font-size:14px;color:var(--ink-2)}
+.pcard .pfoot{margin-top:auto;padding-top:10px;min-height:66px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;border-top:1px solid var(--line)}
+.pcard .pmeta{font-size:12.5px;color:var(--muted)}
+.pcard .pill{align-self:flex-start;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--ink-2);white-space:nowrap}
+.pcard .pill.hl{background:var(--marker);border-color:var(--marker);color:var(--marker-ink);font-weight:500}
+.pcard.wide{margin-top:18px;display:grid;grid-template-columns:200px minmax(0,1fr);grid-template-rows:auto auto;column-gap:24px;align-items:baseline}
+.pcard.wide .tid{grid-row:span 2}
+@media (min-width:901px){.hero{min-height:calc(100svh - 57px);align-items:center;padding-block:48px}}
+@media (max-width:1000px){.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.pgrid{grid-template-columns:minmax(0,1fr)}.pcard.wide{display:flex}.pcard .pfoot{min-height:0}}
 .spec{background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
 .spec header{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--sunk);font-family:var(--mono);font-size:12px;color:var(--muted)}
 .spec dl{margin:0;display:grid;grid-template-columns:auto 1fr}
@@ -246,6 +255,7 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
   <div class="wrap">
     <a class="brand" href="#top">Nguyễn Khắc Quyết</a>
     <ul>
+      <li><a class="l" href="#projects">Projects</a></li>
       <li><a class="l" href="#mistalent">Credit decision</a></li>
       <li><a class="l" href="#patent">Patent &amp; IP</a></li>
       <li><a class="l" href="#hr">HR records</a></li>
@@ -261,14 +271,8 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
   <div>
     <h1>Nguyễn Khắc Quyết<span class="role">Business Analyst</span></h1>
     <p class="thesis">I'm a Management Information Systems student at Thuong Mai University who enjoys working out how a business really runs and writing it down so a team can build it.</p>
-    <nav class="toc" aria-label="Projects in this portfolio">
-      <p class="toc-h">In this portfolio</p>
-      <a href="#mistalent"><span class="tid">PRJ-01</span><span class="tt"><b>Credit &amp; cash-flow decision workflow</b><small>MIS TALENT 2026 · BA &amp; agent designer</small></span><span class="pill hl">Second Runner-Up</span></a>
-      <a href="#patent"><span class="tid">PRJ-02</span><span class="tt"><b>Patent &amp; IP rights database</b><small>SQL Server · Team lead</small></span></a>
-      <a href="#hr"><span class="tid">PRJ-03</span><span class="tt"><b>HR records database</b><small>SQL Server · Team lead</small></span><span class="pill">Peer rating 10/10</span></a>
-      <a href="#cinema"><span class="tid">PRJ-04</span><span class="tt"><b>Cinema ticket booking system</b><small>Systems analysis &amp; design · Team lead of 9</small></span><span class="pill hl">Score 9.5/10</span></a>
-      <a href="#built"><span class="tid">APPS</span><span class="tt"><b>Two web apps, built solo</b><small>CineDiary · Việt Nam Travel · PHP &amp; MySQL</small></span></a>
-    </nav>
+    <p class="thesis-sub">I write BRDs, SRSs and user stories, model processes in BPMN and UML, and check my own specs by building them in SQL and code. I have led three student teams of five to nine people.</p>
+    <a class="scroll-cue" href="#projects">See my projects <span aria-hidden="true">↓</span></a>
   </div>
   <aside class="spec" aria-label="Profile summary">
     <dl>
@@ -282,6 +286,21 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     </dl>
   </aside>
 </header>
+
+<!-- PROJECTS OVERVIEW -->
+<section class="block" id="projects" aria-labelledby="pj-h" style="scroll-margin-top:56px">
+  <div class="sec-head">
+    <h2 id="pj-h">Projects in this portfolio</h2>
+    <p>Four analysis projects, three of them as team lead, and two web apps I built on my own. Pick one to jump to its case study.</p>
+  </div>
+  <div class="pgrid">
+    <a class="pcard" href="#mistalent"><span class="tid">PRJ-01 · Competition</span><h3>Credit &amp; cash-flow decision workflow</h3><p>Three AI agents decide whether a one-person company can take a 4.2B VND contract and which loan should fund it.</p><span class="pfoot"><span class="pmeta">MIS TALENT 2026 · BA &amp; agent designer</span><span class="pill hl">Second Runner-Up</span></span></a>
+    <a class="pcard" href="#patent"><span class="tid">PRJ-02 · Database</span><h3>Patent &amp; IP rights database</h3><p>Follows a patent from application to a granted, valued and transferable right, with triggers enforcing the rules.</p><span class="pfoot"><span class="pmeta">SQL Server · Team lead of 5</span></span></a>
+    <a class="pcard" href="#hr"><span class="tid">PRJ-03 · Database</span><h3>HR records database</h3><p>Employee files, labour contracts with insurance, business trips, and an alert for contracts about to expire.</p><span class="pfoot"><span class="pmeta">SQL Server · Team lead of 5</span><span class="pill">Peer rating 10/10</span></span></a>
+    <a class="pcard" href="#cinema"><span class="tid">PRJ-04 · Analysis &amp; design</span><h3>Cinema ticket booking system</h3><p>A ~250-page spec: 14 use cases, ~140 requirements, seat locking, promotions and payment gateways.</p><span class="pfoot"><span class="pmeta">Systems analysis &amp; design · Team lead of 9</span><span class="pill hl">Score 9.5/10</span></span></a>
+  </div>
+  <a class="pcard wide" href="#built"><span class="tid">APPS · Built solo</span><h3>Two web apps from spec to running code</h3><p>CineDiary, a film review community, and Việt Nam Travel, a travel blog with an AI assistant. PHP &amp; MySQL.</p></a>
+</section>
 
 <!-- PRJ-01 -->
 <article class="case" id="mistalent" aria-labelledby="m-h">
