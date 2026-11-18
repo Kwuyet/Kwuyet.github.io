@@ -180,15 +180,15 @@ pre.code{background:var(--code-bg);color:var(--code-ink);font-family:var(--mono)
 .callout ol{margin:0;padding-left:20px;display:grid;gap:6px;color:var(--ink-2);font-size:15px}
 
 /* approach */
-.approach{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden;box-shadow:var(--shadow)}
-.approach>div{padding:18px;border-right:1px solid var(--line)}
-.approach>div:last-child{border-right:0}
-.approach .step{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
-.approach h3{font-size:19px;font-weight:650;margin:6px 0 8px}
-.approach p{font-size:14px;color:var(--ink-2)}
-.approach .ev{margin-top:10px;font-size:12.5px;color:var(--muted)}
-.approach .ev a{color:var(--muted)}
-@media (max-width:900px){.approach{grid-template-columns:minmax(0,1fr)}.approach>div{border-right:0;border-bottom:1px solid var(--line)}.approach>div:last-child{border-bottom:0}}
+.approach-sec{padding-block:36px;scroll-margin-top:64px}
+.approach-h{font-size:20px;font-weight:650;margin-bottom:14px}
+.approach{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden}
+.approach li{padding:12px 16px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.approach li:last-child{border-right:0}
+.approach .step{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.approach .ev{font-size:13.5px;color:var(--muted);line-height:1.45}
+.approach .ev a{color:var(--ink-2);white-space:nowrap}
+@media (max-width:900px){.approach{grid-template-columns:minmax(0,1fr)}.approach li{flex-direction:row;align-items:baseline;gap:12px;border-right:0;border-bottom:1px solid var(--line);padding:10px 14px}.approach li:last-child{border-bottom:0}.approach .step{flex:0 0 112px;white-space:nowrap}}
 
 /* bpmn */
 #m-bpmn,#m-stories{scroll-margin-top:72px}
@@ -279,18 +279,15 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
 </header>
 
 <!-- APPROACH -->
-<section class="block" id="approach" aria-labelledby="a-h" style="scroll-margin-top:64px">
-  <div class="sec-head">
-    <h2 id="a-h">How I work as a BA</h2>
-    <p>The same five steps run through every project below. Each step links to the work that shows it.</p>
-  </div>
-  <div class="approach">
-    <div><p class="step">01 · Elicit</p><h3>Understand the business</h3><p>Map how the business runs today and where it breaks: cash, risk, hand-offs between people.</p><p class="ev">Evidence: <a href="#mistalent">OPC case analysis</a>, <a href="#cinema">7 process descriptions</a></p></div>
-    <div><p class="step">02 · Model</p><h3>Draw the process</h3><p>BPMN for the flow and decisions, DFD for the data, use case and activity diagrams for each function.</p><p class="ev">Evidence: <a href="#m-bpmn">BPMN</a>, <a href="#mistalent">DFD 0/1</a>, <a href="#cinema">UC04, UC12</a></p></div>
-    <div><p class="step">03 · Specify</p><h3>Write testable requirements</h3><p>Business rules, functional requirements and user stories with Given / When / Then acceptance criteria.</p><p class="ev">Evidence: <a href="#m-stories">user stories</a>, <a href="#mistalent">RR-001–007</a>, <a href="#cinema">~140 FRs</a></p></div>
-    <div><p class="step">04 · Validate</p><h3>Check it can be built</h3><p>Turn rules into database triggers, views and schema checks, and build working apps to test my own specs.</p><p class="ev">Evidence: <a href="#patent">triggers</a>, <a href="#hr">SQL views</a>, <a href="#built">2 web apps</a></p></div>
-    <div><p class="step">05 · Measure</p><h3>Compare before and after</h3><p>Recalculate the decision when conditions change and track results on KPI dashboards.</p><p class="ev">Evidence: <a href="#mistalent">Crisis Center</a>, <a href="#built">admin KPI dashboards</a></p></div>
-  </div>
+<section class="block approach-sec" id="approach" aria-labelledby="a-h">
+  <h2 id="a-h" class="approach-h">How I work as a BA</h2>
+  <ol class="approach">
+    <li><span class="step">01 · Elicit</span><span class="ev"><a href="#mistalent">OPC case analysis</a> · <a href="#cinema">7 process descriptions</a></span></li>
+    <li><span class="step">02 · Model</span><span class="ev"><a href="#m-bpmn">BPMN</a> · <a href="#mistalent">DFD 0/1</a> · <a href="#cinema">UC04, UC12</a></span></li>
+    <li><span class="step">03 · Specify</span><span class="ev"><a href="#m-stories">User stories &amp; AC</a> · <a href="#mistalent">RR-001–007</a> · <a href="#cinema">~140 FRs</a></span></li>
+    <li><span class="step">04 · Validate</span><span class="ev"><a href="#patent">Triggers</a> · <a href="#hr">SQL views</a> · <a href="#built">2 web apps</a></span></li>
+    <li><span class="step">05 · Measure</span><span class="ev"><a href="#mistalent">Crisis Center before/after</a> · <a href="#built">KPI dashboards</a></span></li>
+  </ol>
 </section>
 
 <!-- PRJ-01 -->
