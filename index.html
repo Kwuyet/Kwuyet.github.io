@@ -245,6 +245,12 @@ body{overflow-x:clip}
 .tabs [role=tab][aria-selected=true]{color:var(--accent);border-bottom-color:var(--accent)}
 .tabpanel>:first-child{margin-top:28px!important}
 
+/* browser frames for app screenshots */
+.gallery.browser .shot{position:relative;padding-top:24px;background:var(--sunk)}
+.gallery.browser .shot::before{content:"";position:absolute;top:9px;left:12px;width:7px;height:7px;border-radius:50%;background:#E5534B;box-shadow:12px 0 0 #E8B341,24px 0 0 #4CAF50}
+.gallery.browser .shot::after{content:"";position:absolute;top:6px;left:52px;right:12px;height:12px;border-radius:4px;background:var(--surface);opacity:.8}
+.gallery.browser .shot img{border-top:1px solid var(--line)}
+
 /* collapsible galleries */
 .gallery.collapsed>figure.extra{display:none}
 .more{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font:600 14px var(--body);color:var(--accent);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer}
@@ -842,7 +848,7 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     <div><h4>Administration</h4><ul><li>Dashboard with date-range KPIs and trend chart</li><li>Moderation queue: hide, restore or delete in bulk</li><li>Lock accounts and change roles</li><li>Import films from CSV</li></ul></div>
   </div>
 
-  <div class="gallery" data-show="2">
+  <div class="gallery browser" data-show="2">
     <figure class="wide"><button class="shot" type="button" data-cap="CineDiary home page"><img src="img/cd-home.jpg" alt="CineDiary home page" loading="eager"></button><figcaption>Home</figcaption></figure>
     <figure><button class="shot" type="button" data-cap="Discover: latest community reviews"><img src="img/cd-discover.jpg" alt="Discover page" loading="eager"></button><figcaption>Discover</figcaption></figure>
     <figure><button class="shot" type="button" data-cap="Film page with reviews"><img src="img/cd-movie.jpg" alt="Film page" loading="eager"></button><figcaption>Film page</figcaption></figure>
@@ -890,7 +896,7 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
     <div><h4>Administration</h4><ul><li>KPIs, 12-month trend, category mix</li><li>Export reports to Excel and PDF</li><li>Moderate posts and comments</li><li>Manage users, categories, places, guides</li></ul></div>
   </div>
 
-  <div class="gallery" data-show="2">
+  <div class="gallery browser" data-show="2">
     <figure class="wide"><button class="shot" type="button" data-cap="Home page with the 3D flight hero"><img src="img/tr-3d.jpg" alt="Home page with a 3D airplane over a mountain road" loading="eager"></button><figcaption>Home with 3D flight hero</figcaption></figure>
     <figure><button class="shot" type="button" data-cap="Home page"><img src="img/tr-home.jpg" alt="Home page hero" loading="eager"></button><figcaption>Home</figcaption></figure>
     <figure><button class="shot" type="button" data-cap="Explore destination guides"><img src="img/tr-explore.jpg" alt="Explore page" loading="eager"></button><figcaption>Explore guides</figcaption></figure>
