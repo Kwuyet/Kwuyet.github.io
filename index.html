@@ -217,6 +217,12 @@ pre.code{background:var(--code-bg);color:var(--code-ink);font-family:var(--mono)
 .story .trace{margin-top:auto;padding-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
 @media (max-width:900px){.stories{grid-template-columns:minmax(0,1fr)}}
 
+/* scroll spy + back to top */
+.nav a.l.on{color:var(--accent);background:var(--accent-soft)}
+.totop{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:30;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--accent);font-size:20px;box-shadow:var(--shadow);cursor:pointer;opacity:0;pointer-events:none;transform:translateY(8px);transition:opacity .2s,transform .2s}
+.totop.show{opacity:1;pointer-events:auto;transform:none}
+.totop:hover{border-color:var(--accent)}
+
 /* featured case */
 body{overflow-x:clip}
 .case.featured{position:relative;border-top:0;isolation:isolate}
@@ -903,6 +909,8 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
   <div class="wrap">Nguyễn Khắc Quyết · Management Information Systems, Thuong Mai University · Portfolio 2026</div>
 </footer>
 
+<button type="button" class="totop" id="totop" aria-label="Back to top">↑</button>
+
 <dialog class="lb" id="lb" aria-label="Enlarged image">
   <button type="button" id="lb-close" aria-label="Close">×</button>
   <img id="lb-img" alt="">
@@ -962,6 +970,21 @@ dialog.lb button{position:fixed;top:14px;right:18px;background:#fff;color:#0F1B2
   });
   reveal(location.hash.slice(1));
   window.addEventListener('hashchange',function(){reveal(location.hash.slice(1))});
+  var links=[].slice.call(document.querySelectorAll('.nav a.l')),navUl=document.querySelector('.nav ul');
+  var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1))});
+  function spy(){
+    var y=window.scrollY+120,cur=-1;
+    secs.forEach(function(sec,i){if(sec&&sec.offsetTop<=y)cur=i;});
+    if(window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-4)cur=links.length-1;
+    links.forEach(function(a,i){
+      var on=i===cur;
+      if(on&&!a.classList.contains('on')){var l=a.offsetLeft-(navUl.clientWidth-a.offsetWidth)/2;navUl.scrollTo({left:l,behavior:'smooth'});}
+      a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current');
+    });
+    document.getElementById('totop').classList.toggle('show',window.scrollY>window.innerHeight);
+  }
+  window.addEventListener('scroll',spy,{passive:true});window.addEventListener('resize',spy);spy();
+  document.getElementById('totop').addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
   document.getElementById('lb-close').addEventListener('click',close);
   lb.addEventListener('click',function(e){if(e.target===lb)close();});
 })();
